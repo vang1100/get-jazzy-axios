@@ -2,6 +2,12 @@ const express = require('express');
 
 const app = express();
 const PORT = 5001;
+app.use(express.json()); // <- This is new boiler plate
+// we need to include it, anytime the server is going to have post routes.
+
+// Setup express.static files
+app.use(express.static('server/public'));
+
 
 const artistListArray = [
     {
@@ -100,7 +106,7 @@ app.post('/artist', function(req, res) {
     // }
     // I'm choosing that structure, because it matches the structure of all the other quotes on the server.
 
-    let newArtist = req.body;
+    let newArtist = req.body.artistToAdd;
 
     // If it has the right structure, I can just add it to the list of quotes!
     artistListArray.push(newArtist);

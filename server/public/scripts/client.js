@@ -105,19 +105,20 @@ function submitHandler(event){
         // 2) the payload object
 
     axios.post('/artist', artistToAdd)
-    .then(response => {
+    .then((response) => {
         console.log('post/artist works', response);
+
+     onReady();
 
         document.querySelector('#name').value = '';
         document.querySelector('#birth-Date').value = '';
         document.querySelector('#death-Date').value = '';
 
 
-        onReady();
-    })
-    .catch (error=> {
+    
+    }).catch((error)=> {
         console.log('post failed', error);
         alert('something went wrong');
-    })
+    });
 
 }
